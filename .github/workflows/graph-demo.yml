@@ -1,0 +1,21 @@
+name: Graph Demo CI
+
+on:
+  workflow_dispatch:  # rulează manual
+  schedule:
+    - cron: '0 12 * * *'  # rulează zilnic la 12:00 UTC
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Run Graph demo script
+        run: |
+          echo "Running Microsoft Graph demo script"
+          node graph-demo.js
